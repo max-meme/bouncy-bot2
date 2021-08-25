@@ -1,12 +1,12 @@
 const Discord = module.require("discord.js")
 
 module.exports.run = async(data) => {
-    const me = data.client.users.cache.get(data.author);
+    const a = data.client.users.cache.get(data.author);
     data.message.channel.send({ embeds: [{
         color: "#811ae8",
         author: {
-          name: me.username,
-          icon_url: me.displayAvatarURL()
+          name: a.username,
+          icon_url: a.displayAvatarURL()
         },
         title: "Source",
         url: "https://github.com/max-meme/bouncy-bot2",
