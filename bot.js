@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client({intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_BANS", "GUILD_EMOJIS_AND_STICKERS", "GUILD_INVITES", "GUILD_MESSAGE_REACTIONS", "GUILD_PRESENCES", "GUILD_VOICE_STATES", "GUILD_MESSAGES", "DIRECT_MESSAGES", "DIRECT_MESSAGE_TYPING"], partials: ["CHANNEL"]});
 const fs = require("fs");
 
+const version = "2.0"
+
 //load files
 var creds = JSON.parse(fs.readFileSync('./creds.json', 'utf-8'));
 var settings = JSON.parse(fs.readFileSync('./settings.json', 'utf-8'));
@@ -68,7 +70,7 @@ client.on("messageCreate", async message => {
 					updatedata();
 				}
 				else {
-					message.channel.send(`Es wird die Permission **${missingperm}** gebraucht um diesen Command auszuführen`);
+					message.channel.send(`You are missing the permission \`${missingperm}\` to run this command`);
 				}
 			}
 		}
@@ -78,8 +80,8 @@ client.on("messageCreate", async message => {
 client.on('error', console.error);
 
 client.on("ready", () => {
-  console.log("Bouncy bot 2 is online!");
-  client.user.setActivity(`${defaultprefix}help for bouncy Help | Bouncy is currently in beta`);
+  console.log(`Bouncy-bot version ${version} is online!`);
+  client.user.setActivity(`${defaultprefix}help for bouncy Help | Bouncy is currently in beta | version ${version}`);
 })
 
 
