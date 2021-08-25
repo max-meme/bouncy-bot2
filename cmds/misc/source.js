@@ -1,7 +1,7 @@
 const Discord = module.require("discord.js")
 
 module.exports.run = async(data) => {
-    const me = data.client.users.cache.get("230771288816222211");
+    const me = data.client.users.cache.get(data.author);
     data.message.channel.send({ embeds: [{
         color: "#811ae8",
         author: {

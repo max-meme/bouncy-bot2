@@ -17,7 +17,6 @@ module.exports.run = async function run(data) {
         if(5000 < SR || SR < 1) return message.channel.send("SR needs to be between 1 and 5000 or \`unranked\`")
     }
     data.settings[message.guildId].player_cache.push({name: name_input, sr: SR, unranked: unranked})
-    data.updatedata();
     message.channel.send(`Player \`${name_input}\` has been added`)
 }
 

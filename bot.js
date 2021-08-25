@@ -41,7 +41,8 @@ client.on("messageCreate", async message => {
 		settings: settings,
 		cmds: cmds,
 		defaultprefix: defaultprefix,
-		prefix: prefix
+		prefix: prefix,
+		author: creds.author
 	}
 
 	//callt alle funktionen die bei jeder message gecallt werden müssen oder die die ausgefürt werden sollen

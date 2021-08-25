@@ -14,7 +14,7 @@ module.exports.run = async(data) => {
 			} 
 		}
 		if(!gefunden) return message.channel.send(`No command found called ${arg[0]}`);
-		mess.setTitle(cmds[i].settings.cmd).addField(cmds[i].help.usage, `Used to: ${cmds[i].help.func}`);
+		mess.setTitle(cmds[i].settings.cmd).addField(cmds[i].help.usage.replace("(prefix)", data.prefix), `Used to: ${cmds[i].help.func}`);
 	}
 	else {
 		var cats = [];

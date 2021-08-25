@@ -1,8 +1,7 @@
 const Discord = module.require("discord.js")
 
 module.exports.run = async function run(data) {
-    data.guildSettings[data.message.guildId].player_cache = [];
-    data.updatedata();
+    data.settings[data.message.guildId].player_cache = [];
     data.message.channel.send(`Player list has been cleared`)
 }
 
