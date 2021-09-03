@@ -13,6 +13,8 @@ client.login(creds.discord_token);
 var cmds = readcmds();
 let defaultprefix = "b!"
 
+TimerCheck();
+
 client.on("messageCreate", async message => {
 	if(message.author.bot) return;
 
@@ -22,7 +24,8 @@ client.on("messageCreate", async message => {
 		if (!settings[guild.id]) {
 			settings[guild.id] = {
 				prefix: defaultprefix,
-				player_cache: []
+				player_cache: [],
+				reminders: []
 			}
 			updatedata();
 		}
@@ -156,4 +159,19 @@ function updatedata() {
     }
   });
   console.log("data saved!");
+}
+
+function TimerCheck() {
+	setInterval(function() {
+		for(x in settings) {
+			for (let i = settings[x].reminders.length - 1; i >= 0; i--) {
+				const reminder = settings[x].reminders[i];
+				if(reminder.remind <= Date.now()) {
+					client.users.cache.get(reminder.user).send(`Here is your reminder for \`${reminder.text}\``);
+					if(!reminder.repeat) settings[x].reminders.splice(i, 1);
+					else reminder.remind = Date.now() + reminder.addTime;
+				}
+			}
+		};
+	}, 1000)
 }
