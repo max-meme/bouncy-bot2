@@ -14,5 +14,9 @@ WORKDIR /usr/src/bot
 RUN git clone https://github.com/max-meme/bouncy-bot2
 WORKDIR /usr/src/bot/bouncy-bot2
 
+#copy needed files
+COPY /home/main/botfiles/creds.json /usr/src/bot/bouncy-bot2/
+COPY /home/main/botfiles/settings.json /usr/src/bot/bouncy-bot2/
+
 # Start the bot.
 CMD ["node", "bot.js"]
