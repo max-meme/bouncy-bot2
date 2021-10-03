@@ -17,7 +17,7 @@ WORKDIR /usr/src/bot/bouncy-bot2
 RUN touch creds.json
 RUN touch settings.json
 
-RUN echo '{{"discord_token": "TOKEN HERE","author": "AUTHOR HERE"}}' > creds.json
+RUN echo '{"discord_token": "TOKEN HERE","author": "AUTHOR HERE"}' > creds.json
 RUN echo "{}" > settings.json
 
 # Start the bot.
