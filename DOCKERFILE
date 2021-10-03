@@ -1,0 +1,18 @@
+FROM node:latest
+
+#keys
+ARG discord-arg
+ARG author-arg
+
+ENV discord-arg=${discord-arg}
+ENV author-arg=${author-arg}
+
+# Create the bot's directory
+RUN mkdir -p /usr/src/bot
+WORKDIR /usr/src/bot
+
+RUN git clone https://github.com/max-meme/bouncy-bot2
+WORKDIR /usr/src/bot/bouncy-bot2
+
+# Start the bot.
+CMD ["node", "bot.js"]
